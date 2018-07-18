@@ -1,7 +1,7 @@
 var Task = require('./taskClass');
 
-var task1 = new Task('Create a sample task 1');
-var task2 = new Task('Create a sample task 2');
+var task1 = new Task({name: 'Create a sample task 1'});
+var task2 = new Task({name: 'Create a sample task 2'});
 
 task1.save();
 task2.save();

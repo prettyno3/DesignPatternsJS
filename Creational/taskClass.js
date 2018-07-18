@@ -1,8 +1,8 @@
 'use stric';
 
 class Task{
-    constructor(name){
-        this.name = name;
+    constructor(data){
+        this.name = data.name;
         this.completed = false;
     };
 
