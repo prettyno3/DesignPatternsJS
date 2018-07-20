@@ -82,15 +82,15 @@ var as = new auditingService();
 
 //--------------------------------
 
-var mediator = new Mediator();
+// var mediator = new Mediator();
 
-mediator.subscribe('complete', ns, ns.update);
-mediator.subscribe('complete', ls, ls.update);
-mediator.subscribe('complete', as, as.update);
+// mediator.subscribe('complete', ns, ns.update);
+// mediator.subscribe('complete', ls, ls.update);
+// mediator.subscribe('complete', as, as.update);
 
-task1.complete = function(){
-    mediator.publish('complete', this);
-    Task.prototype.complete.call(this);
-}
+// task1.complete = function(){
+//     mediator.publish('complete', this);
+//     Task.prototype.complete.call(this);
+// }
 
-task1.complete();
+// task1.complete();
