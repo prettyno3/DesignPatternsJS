@@ -1,4 +1,5 @@
 var Task = require('./task');
+var Mediator = require('./mediator');
 
 var notificationService = function(){
     var message = 'Notifying ';
@@ -67,12 +68,29 @@ var ns = new notificationService();
 var ls = new loggingService();
 var as = new auditingService();
 
+//--------------------------------
 // task1.save();
 
 // ns.update();
 
-task1.addObserver(ns.update);
-task1.addObserver(ls.update);
-task1.addObserver(as.update);
+//--------------------------------
+// task1.addObserver(ns.update);
+// task1.addObserver(ls.update);
+// task1.addObserver(as.update);
 
-task1.save();
+// task1.save();
+
+//--------------------------------
+
+var mediator = new Mediator();
+
+mediator.subscribe('complete', ns, ns.update);
+mediator.subscribe('complete', ls, ls.update);
+mediator.subscribe('complete', as, as.update);
+
+task1.complete = function(){
+    mediator.publish('complete', this);
+    Task.prototype.complete.call(this);
+}
+
+task1.complete();
